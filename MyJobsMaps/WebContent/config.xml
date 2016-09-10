@@ -46,6 +46,7 @@
 <gap:plugin name="cordova-plugin-googlemaps" source="npm">
 
     <param name="API_KEY_FOR_ANDROID" value="AIzaSyD3PJWHRfNKb4QM3seT0dusiQeZ6N7AyW8" />
+    <param name="API_KEY_FOR_IOS" value="AIzaSyD3PJWHRfNKb4QM3seT0dusiQeZ6N7AyW8" />
    
   </gap:plugin>
 <gap:plugin name="com.verso.cordova.clipboard" spec="0.1.0" source="pgb" />
