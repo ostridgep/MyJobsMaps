@@ -7,7 +7,7 @@
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/geoxml3.js"></script>
 <script type="text/javascript" src="js/ProjectedOverlay.js"></script> 
-
+<link rel="stylesheet" href="css/w3c.css">
 <script>
 
 
@@ -110,18 +110,7 @@ input:checked + .slider:before {
     cursor: pointer;
 }
 
-.button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
+
 </style>
 <body>
 <div id="googleMap" style="
@@ -130,8 +119,12 @@ input:checked + .slider:before {
     left: 0;
     bottom: 100px;
     right: 0;"></div>
-  <button class="button" style="background-color:red " type="button" onClick="closeTheApp('Closed');">Close Page</button>
-  <button id="myBtn" class="button" style="background-color:green " onClick=" modal.style.display = 'block';">Layers</button>
+<button class="w3-btn w3-red w3-border w3-round-xlarge" onClick="closeTheApp('Closed');">Close Page</button>
+<button class="w3-btn w3-green w3-border w3-round-xlarge" onClick="modal.style.display = 'block';">Layers</button>
+  Location:&nbsp;<input type="text" id="location">&nbsp 
+<button class="w3-btn w3-blue w3-border w3-round-xlarge" onClick="findLocation()">Search</button>
+<button class="w3-btn w3-blue w3-border w3-round-xlarge" onClick="getRoute()">Route</button>
+  
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -299,8 +292,72 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+function findLocation(){
+	locval = document.getElementById("location").value
+var request = {
+		  'address': locval
+		};
+	
+		plugin.google.maps.Geocoder.geocode(request, function(results) {
+		  if (results.length) {
+		    var result = results[0];
+		    var position = result.position; 
 
+		    map.addMarker({
+		      'position': position,
+		      'title':  JSON.stringify(result.position)
+		    }, function(marker) {
 
+		      map.animateCamera({
+		        'target': position,
+		        'zoom': 17
+		      }, function() {
+		        marker.showInfoWindow();
+		      });
+
+		    });
+		  } else {
+		    alert("Not found");
+		  }
+		});
+}
+function getRoute(){
+	var yourLocation = null;
+	map.getMyLocation(function(location) {
+	  yourLocation = location.latLng;
+
+	  map.addMarker({
+	    "position": yourLocation,
+	    "title": "I am around here!"
+	  }, function(marker) {
+	    marker.showInfoWindow();
+	  });
+
+	  map.moveCamera({
+	    "target": yourLocation,
+	    "zoom": 12
+	  });
+	});
+
+	map.on(plugin.google.maps.event.MAP_CLICK, function(latLng) {
+	  map.addMarker({
+	    "position": latLng,
+	    "title": "Destination"
+	  }, function(marker) {
+	    marker.showInfoWindow();
+
+	    setTimeout(function() {
+
+	      if (confirm("Do you want to go?")) {
+	        plugin.google.maps.external.launchNavigation({
+	          "from": yourLocation,
+	          "to": latLng
+	        });
+	      }
+	    }, 2000);
+	  });
+	});
+}
 </SCRIPT>
   </body>
 </html>
