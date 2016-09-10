@@ -3,15 +3,6 @@
 <kml xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns="http://www.opengis.net/kml/2.2">
 <Document>
 <name>SewStorage_Huntingdon</name>
-
-<Style id="pushpin">
-    <IconStyle>
-      <Icon>
-        <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
-        <scale>1.0</scale>
-      </Icon>
-    </IconStyle>
-  </Style>
 <visibility>1</visibility>
 <Schema name="SewStorage_Huntingdon" id="kml_schema_ft_SewStorage_Huntingdon">
 <SimpleField type="xsd:double" name="G3E_FID">
@@ -20,8 +11,8 @@
 </Schema>
 <Folder id="kml_ft_SewStorage_Huntingdon">
 <name>SewStorage_Huntingdon</name>
-<Placemark id="kml_1"> 
-<name>kml_1</name> 
+<Placemark id="kml_1">
+<name>kml_1</name>
 <snippet> </snippet>
 <description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
 <th>G3E_FID</th>
@@ -32,8 +23,7 @@
 <SimpleData name="G3E_FID">8100079</SimpleData>
 </SchemaData>
 </ExtendedData>
-<styleUrl>#pushpin</styleUrl>
-<point>
+<Point>
 <coordinates>-0.294460055817885,52.4884959173805,0 </coordinates>
 </Point>
 </Placemark>
@@ -49,7 +39,7 @@
 <SimpleData name="G3E_FID">8100083</SimpleData>
 </SchemaData>
 </ExtendedData>
-<styleUrl>#pushpin</styleUrl><point>
+<Point>
 <coordinates>-0.245760030783237,52.5161221650676,0 </coordinates>
 </Point>
 </Placemark>
@@ -65,7 +55,7 @@
 <SimpleData name="G3E_FID">12996172</SimpleData>
 </SchemaData>
 </ExtendedData>
-<styleUrl>#pushpin</styleUrl><point>
+<Point>
 <coordinates>-0.245855846246888,52.5223611283192,0 </coordinates>
 </Point>
 </Placemark>
@@ -81,7 +71,7 @@
 <SimpleData name="G3E_FID">23786837</SimpleData>
 </SchemaData>
 </ExtendedData>
-<styleUrl>#pushpin</styleUrl><point>
+<Point>
 <coordinates>-0.308113998220891,52.2876677448252,0 </coordinates>
 </Point>
 </Placemark>
@@ -97,7 +87,7 @@
 <SimpleData name="G3E_FID">38699042</SimpleData>
 </SchemaData>
 </ExtendedData>
-<styleUrl>#pushpin</styleUrl><point>
+<Point>
 <coordinates>-0.29036663501515,52.4878300412301,0 </coordinates>
 </Point>
 </Placemark>
