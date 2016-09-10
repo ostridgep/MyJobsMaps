@@ -221,17 +221,7 @@ function initialize()
 	       layers = new geoXML3.parser({map: map, 
 	    		afterParse: layerLoaded,
 	    	    zoom: false,
-	    		processStyles: true,
-	    		
-                createMarker:function(placemark){
-                    //Constructing marker for each Placemark node, and then add it to the markclustere
-                    //var point = new google.maps.LatLng(placemark.point.lat, placemark.point.lng);
-                    var marker = new google.maps.Marker({icon: image});
-
-                    
-
-                    markerclusterer.addMarker(marker);
-                }	
+	    		processStyles: true	
 	       });
 	    });
 
