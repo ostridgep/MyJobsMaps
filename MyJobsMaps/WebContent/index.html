@@ -15,7 +15,112 @@
 </script>
 </head>
 <style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
 
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 </style>
 <body>
 <div id="googleMap" style="
@@ -40,7 +145,7 @@
 </label></TD><TD valign="middle"><font size="5">Sewers</font></TD></TR>
 
 <TR valign="center"><td><label class="switch">
-  <input id = "cb2" type="checkbox" onclick="setLayer(this,'Data/kml/Manholes_Huntingdon.kml')">
+  <input type="checkbox" onclick="setLayer(this,'Data/kml/Manholes_Huntingdon.kml')">
   <div class="slider"></div>
 </label></TD><TD valign="middle"><font size="5">Manholes</font></TD></TR>
 <TR><td><label class="switch">
@@ -49,7 +154,7 @@
 </label></TD><TD valign="middle"><font size="5">Discharge</font></TD></TR>
 
 <TR valign="center"><td><label class="switch">
-  <input id = "cb2" type="checkbox" onclick="setLayer(this,'Data/kml/SewPump_Huntingdon.kml')">
+  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewPump_Huntingdon.kml')">
   <div class="slider"></div>
 </label></TD><TD valign="middle"><font size="5">Pumps</font></TD></TR>
 <TR><td><label class="switch">
@@ -58,7 +163,7 @@
 </label></TD><TD valign="middle"><font size="5">Storage</font></TD></TR>
 
 <TR valign="center"><td><label class="switch">
-  <input id = "cb2" type="checkbox" onclick="setLayer(this,'Data/kml/SewTreatment_Huntingdon.kml')">
+  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewTreatment_Huntingdon.kml')">
   <div class="slider"></div>
 </label></TD><TD valign="middle"><font size="5">Treatment</font></TD></TR>
   </div>
