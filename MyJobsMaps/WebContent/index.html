@@ -9,7 +9,7 @@
 <script type="text/javascript" src="js/ProjectedOverlay.js"></script> 
 <link rel="stylesheet" href="css/w3c.css">
 <script>
-
+var geocoder = new google.maps.Geocoder();
 
 
 
@@ -293,33 +293,21 @@ window.onclick = function(event) {
     }
 }
 function findLocation(){
-	locval = document.getElementById("location").value
-var request = {
-		  'address': locval
-		};
-	
-		plugin.google.maps.Geocoder.geocode(request, function(results) {
-		  if (results.length) {
-		    var result = results[0];
-		    var position = result.position; 
+	codeAddress(document.getElementById("location").value)
 
-		    map.addMarker({
-		      'position': position,
-		      'title':  JSON.stringify(result.position)
-		    }, function(marker) {
-
-		      map.animateCamera({
-		        'target': position,
-		        'zoom': 17
-		      }, function() {
-		        marker.showInfoWindow();
-		      });
-
-		    });
-		  } else {
-		    alert("Not found");
-		  }
-		});
+}
+function codeAddress(address) {
+	geocoder.geocode( { 'address': address}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			map.setCenter(results[0].geometry.location);			// center the map on address
+			var marker = new google.maps.Marker({					// place a marker on the map at the address
+				map: map,
+				position: results[0].geometry.location
+			});
+		} else {
+			alert('Geocode was not successful for the following reason: ' + status);
+		}
+	});
 }
 function getRoute(){
 	var yourLocation = null;
