@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/geoxml3.js"></script>
+<script type="text/javascript" src="js/ProjectedOverlay.js"></script>   
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD3PJWHRfNKb4QM3seT0dusiQeZ6N7AyW8"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+ <link rel="stylesheet" href="css/index.css"> 
+<script>
+
+
+
+
+</script>
+</head>
+<style>
+
+</style>
+<body>
+<div id="googleMap" style="
+ position: absolute;
+    top: 100px;
+    left: 0;
+    bottom: 100px;
+    right: 0;"></div>
+  <button class="button" style="background-color:red " type="button" onClick="closeTheApp('Closed');">Close Page</button>
+  <button id="myBtn" class="button" style="background-color:green " onClick=" modal.style.display = 'block';">Layers</button>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">×</span>
+    <p>Some text in the Modal..</p>
+    <Table>
+<TR><td><label class="switch">
+  <input type="checkbox" onclick="setLayer(this,'Data/kml/Huntingdon_Sewers.kml')">
+  <div class="slider"></div>
+</label></TD><TD valign="middle"><font size="5">Sewers</font></TD></TR>
+
+<TR valign="center"><td><label class="switch">
+  <input id = "cb2" type="checkbox" onclick="setLayer(this,'Data/kml/Manholes_Huntingdon.kml')">
+  <div class="slider"></div>
+</label></TD><TD valign="middle"><font size="5">Manholes</font></TD></TR>
+<TR><td><label class="switch">
+  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewDischarge_Huntingdon.kml')">
+  <div class="slider"></div>
+</label></TD><TD valign="middle"><font size="5">Discharge</font></TD></TR>
+
+<TR valign="center"><td><label class="switch">
+  <input id = "cb2" type="checkbox" onclick="setLayer(this,'Data/kml/SewPump_Huntingdon.kml')">
+  <div class="slider"></div>
+</label></TD><TD valign="middle"><font size="5">Pumps</font></TD></TR>
+<TR><td><label class="switch">
+  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewStorage_Huntingdon.kml')">
+  <div class="slider"></div>
+</label></TD><TD valign="middle"><font size="5">Storage</font></TD></TR>
+
+<TR valign="center"><td><label class="switch">
+  <input id = "cb2" type="checkbox" onclick="setLayer(this,'Data/kml/SewTreatment_Huntingdon.kml')">
+  <div class="slider"></div>
+</label></TD><TD valign="middle"><font size="5">Treatment</font></TD></TR>
+  </div>
+
+</div>   
+
+<SCRIPT>
+function setLayer(checkbox,kml)
+{
+	if(checkbox.checked){
+		loadlayer(kml);
+		
+	}else{
+		hidelayer(kml);
+		
+		
+
+	}
+    
+}
+var larr=[]
+function loadlayer(kml){
+	lno=larr.indexOf(kml)
+	if(lno<0){
+		layers.parse(kml);
+		larr.push(kml)
+	}else{
+		layers.showDocument(layers.docs[lno]);
+	}
+	
+}
+function hidelayer(kml){
+	lno=larr.indexOf(kml)
+	if(lno>=0){
+		layers.hideDocument(layers.docs[lno]);
+	}
+	
+}
+var layers ="";
+
+var map;
+
+var llval=""
+	function layerLoaded(){
+	//sap.ui.getCore().byId("LayerLoading").setVisible(false)
+}
+function initialize()
+{
+	var myCenter;
+	if (navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(function (position) {
+	    	myCenter = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	       map.setCenter(myCenter);
+	       layers = new geoXML3.parser({map: map, 
+	    		afterParse: layerLoaded,
+	    	    zoom: false,
+	    		processStyles: true});
+	    });
+
+ 
+	}else{
+		myCenter=new google.maps.LatLng(51.508742,-0.120850);
+	}
+var mapProp = {
+  center:myCenter,
+  zoom:15,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+  map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+ 
+  
+  google.maps.event.addListener(map, 'click', function(event) {
+    placeMarker(event.latLng);
+  });
+  google.maps.event.addListenerOnce(map,'idle',function(){
+	  google.maps.event.trigger(map, "resize");
+  })
+}
+
+function placeMarker(location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  });
+marker.addListener('click', function(event) {
+    var lat = marker.getPosition().lat();
+	var lng = marker.getPosition().lng();
+	llval=lat+","+lng
+	if(caller=="MYJOBS"){
+		closeTheApp(llval)
+	}
+	
+	
+
+  });
+  var infowindow = new google.maps.InfoWindow({
+    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+  });
+  infowindow.open(map,marker);
+}
+
+//initialize()
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+if(x){
+	hidelayer("Data/kml/SewDischarge_Huntingdon.kml");
+	
+}else{
+	
+	loadlayer("Data/kml/SewDischarge_Huntingdon.kml");
+	
+
+}
+
+</SCRIPT>
+  </body>
+</html>
