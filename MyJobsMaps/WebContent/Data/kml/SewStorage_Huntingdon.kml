@@ -3,8 +3,9 @@
 <kml xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns="http://www.opengis.net/kml/2.2">
 <Document>
 <name>SewStorage_Huntingdon</name>
+
 <Style id="pushpin">
-    <IconStyle id="mystyle">
+    <IconStyle>
       <Icon>
         <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
         <scale>1.0</scale>
@@ -31,7 +32,8 @@
 <SimpleData name="G3E_FID">8100079</SimpleData>
 </SchemaData>
 </ExtendedData>
-<styleUrl>#pushpin</styleUrl><point>
+<styleUrl>#pushpin</styleUrl>
+<point>
 <coordinates>-0.294460055817885,52.4884959173805,0 </coordinates>
 </Point>
 </Placemark>
