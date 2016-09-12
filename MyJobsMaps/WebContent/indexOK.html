@@ -2,8 +2,7 @@
 <html>
 <head>
   
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD3PJWHRfNKb4QM3seT0dusiQeZ6N7AyW8&libraries=drawing&callback=initialize"
-         async defer></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD3PJWHRfNKb4QM3seT0dusiQeZ6N7AyW8"></script>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/geoxml3.js"></script>
@@ -93,7 +92,7 @@ input:checked + .slider:before {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 40%;
+    width: 80%;
 }
 
 /* The Close Button */
@@ -122,84 +121,48 @@ input:checked + .slider:before {
     right: 0;"></div>
     <BR><BR>
 <button class="w3-btn w3-red w3-border w3-round-xlarge" onClick="closeTheApp('Closed');">Close Page</button>
-<button class="w3-btn w3-green w3-border w3-round-xlarge" onClick=";modal.style.display = 'block';">Layers</button>
+<button class="w3-btn w3-green w3-border w3-round-xlarge" onClick="modal.style.display = 'block';">Layers</button>
   Location:&nbsp;<input type="text" id="location">&nbsp 
 <button class="w3-btn w3-blue w3-border w3-round-xlarge" onClick="findLocation()">Search</button>
-<button class="w3-btn w3-blue w3-border w3-round-xlarge" onClick="getRoute()">Route</button>Pin Type:   
-<input type="radio" Name="pinType" value="Blue" onclick="setIcon(this.value)" checked="checked"> Blue
-  <input type="radio" Name="pinType" value="Red" onclick="setIcon(this.value)"> Red
-  <input type="radio" Name="pinType" value="Yellow" onclick="setIcon(this.value)"> Yellow
+<button class="w3-btn w3-blue w3-border w3-round-xlarge" onClick="getRoute()">Route</button>
   
 <!-- The Modal -->
-<div id="myModal" class="modal" width="50%">
+<div id="myModal" class="modal">
 
   <!-- Modal content -->
-  <div id ="Layers" class="modal-content" style="display:block">
+  <div class="modal-content">
     <span class="close">×</span>
-    <p>Layers:-</p>
+    <p>Some text in the Modal..</p>
     <Table>
-		<TR><td><label class="switch">
-		  <input type="checkbox" onclick="setLayer(this,'Data/kml/Huntingdon_Sewers.kml')">
-		  <div class="slider"></div>
-		</label></TD><TD valign="middle"><font size="5">Sewers</font></TD></TR>
-		
-		<TR valign="center"><td><label class="switch">
-		  <input type="checkbox" onclick="setLayer(this,'Data/kml/Manholes_Huntingdon.kml')">
-		  <div class="slider"></div>
-		</label></TD><TD valign="middle"><font size="5">Manholes</font></TD></TR>
-		<TR><td><label class="switch">
-		  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewDischarge_Huntingdon.kml')">
-		  <div class="slider"></div>
-		</label></TD><TD valign="middle"><font size="5">Discharge</font></TD></TR>
-		
-		<TR valign="center"><td><label class="switch">
-		  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewPump_Huntingdon.kml')">
-		  <div class="slider"></div>
-		</label></TD><TD valign="middle"><font size="5">Pumps</font></TD></TR>
-		<TR><td><label class="switch">
-		  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewStorage_Huntingdon.kml')">
-		  <div class="slider"></div>
-		</label></TD><TD valign="middle"><font size="5">Storage</font></TD></TR>
-		
-		<TR valign="center"><td><label class="switch">
-		  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewTreatment_Huntingdon.kml')">
-		  <div class="slider"></div>
-		</label></TD><TD valign="middle"><font size="5">Treatment</font></TD></TR>
-</Table>
+<TR><td><label class="switch">
+  <input type="checkbox" onclick="setLayer(this,'Data/kml/Huntingdon_Sewers.kml')">
+  <div class="slider"></div>
+</label></TD><TD valign="middle"><font size="5">Sewers</font></TD></TR>
+
+<TR valign="center"><td><label class="switch">
+  <input type="checkbox" onclick="setLayer(this,'Data/kml/Manholes_Huntingdon.kml')">
+  <div class="slider"></div>
+</label></TD><TD valign="middle"><font size="5">Manholes</font></TD></TR>
+<TR><td><label class="switch">
+  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewDischarge_Huntingdon.kml')">
+  <div class="slider"></div>
+</label></TD><TD valign="middle"><font size="5">Discharge</font></TD></TR>
+
+<TR valign="center"><td><label class="switch">
+  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewPump_Huntingdon.kml')">
+  <div class="slider"></div>
+</label></TD><TD valign="middle"><font size="5">Pumps</font></TD></TR>
+<TR><td><label class="switch">
+  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewStorage_Huntingdon.kml')">
+  <div class="slider"></div>
+</label></TD><TD valign="middle"><font size="5">Storage</font></TD></TR>
+
+<TR valign="center"><td><label class="switch">
+  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewTreatment_Huntingdon.kml')">
+  <div class="slider"></div>
+</label></TD><TD valign="middle"><font size="5">Treatment</font></TD></TR>
   </div>
-  <div id ="Features" class="modal-content"  style="display:none">
-    <span class="close">×</span>
-    <p>Features:-</p>
-    <Table>
-		<TR><td><label class="switch">
-		  <input type="checkbox" onclick="setLayer(this,'Data/kml/Huntingdon_Sewers.kml')">
-		  <div class="slider"></div>
-		</label></TD><TD valign="middle"><font size="5">Sewers</font></TD></TR>
-		
-		<TR valign="center"><td><label class="switch">
-		  <input type="checkbox" onclick="setLayer(this,'Data/kml/Manholes_Huntingdon.kml')">
-		  <div class="slider"></div>
-		</label></TD><TD valign="middle"><font size="5">Manholes</font></TD></TR>
-		<TR><td><label class="switch">
-		  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewDischarge_Huntingdon.kml')">
-		  <div class="slider"></div>
-		</label></TD><TD valign="middle"><font size="5">Discharge</font></TD></TR>
-		
-		<TR valign="center"><td><label class="switch">
-		  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewPump_Huntingdon.kml')">
-		  <div class="slider"></div>
-		</label></TD><TD valign="middle"><font size="5">Pumps</font></TD></TR>
-		<TR><td><label class="switch">
-		  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewStorage_Huntingdon.kml')">
-		  <div class="slider"></div>
-		</label></TD><TD valign="middle"><font size="5">Storage</font></TD></TR>
-		
-		<TR valign="center"><td><label class="switch">
-		  <input type="checkbox" onclick="setLayer(this,'Data/kml/SewTreatment_Huntingdon.kml')">
-		  <div class="slider"></div>
-		</label></TD><TD valign="middle"><font size="5">Treatment</font></TD></TR>
-</Table>
-  </div>
+
 </div>   
 
 <SCRIPT>
@@ -253,8 +216,7 @@ function initialize()
 	       layers = new geoXML3.parser({map: map, 
 	    		afterParse: layerLoaded,
 	    	    zoom: false,
-	    		processStyles: true,
-	    		 icon: icons.parking.icon,
+	    		processStyles: true	
 	       });
 	    });
 
@@ -277,31 +239,11 @@ var mapProp = {
   google.maps.event.addListenerOnce(map,'idle',function(){
 	  google.maps.event.trigger(map, "resize");
   })
-  var drawingManager = new google.maps.drawing.DrawingManager({
-      drawingMode: google.maps.drawing.OverlayType.MARKER,
-      drawingControl: true,
-      drawingControlOptions: {
-        position: google.maps.ControlPosition.TOP_CENTER,
-        drawingModes: ['marker', 'circle', 'polygon', 'polyline', 'rectangle']
-      },
-      markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
-      circleOptions: {
-        fillColor: '#ffff00',
-        fillOpacity: 1,
-        strokeWeight: 5,
-        clickable: false,
-        editable: true,
-        zIndex: 1
-      }
-    });
-    drawingManager.setMap(map);
-  
 }
 
 function placeMarker(location) {
   var marker = new google.maps.Marker({
     position: location,
-    icon: markericon,
     map: map,
   });
 marker.addListener('click', function(event) {
@@ -404,41 +346,6 @@ function getRoute(){
 	    }, 2000);
 	  });
 	});
-}
-
-var iconBase = 'http://maps.google.com/mapfiles/kml/pushpin/';
-
-var icons = {
-  blue: {
-    icon: iconBase + 'blue-pushpin.png'
-  },
-  green: {
-    icon: iconBase + 'grn-pushpin.png'
-  },
-  pink: {
-	    icon: iconBase + 'pink-pushpin.png'
-	  },
-purple: {
-	    icon: iconBase + 'purple-pushpin.png'
-	  },
-	  red: {
-		    icon: iconBase + 'red-pushpin.png'
-		  },
-		  white: {
-		    icon: iconBase + 'wht-pushpin.png'
-		  },
-		  yello: {
-			    icon: iconBase + 'ylw-pushpin.png'
-			  },
-  lightblue: {
-    icon: iconBase + 'ltblue-pushpin.png'
-  }
-};
-markericon=icons.blue.icon
-function setIcon(val){
-	if(val=="Blue"){markericon=icons.blue.icon}
-	if(val=="Red"){markericon=icons.red.icon}
-	if(val=="Yellow"){markericon=icons.yello.icon}
 }
 </SCRIPT>
   </body>
