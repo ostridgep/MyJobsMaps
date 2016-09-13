@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD3PJWHRfNKb4QM3seT0dusiQeZ6N7AyW8&libraries=drawing&callback=initialize"
-         async defer></script>
-<script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+ 
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD3PJWHRfNKb4QM3seT0dusiQeZ6N7AyW8"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/geoxml3.js"></script>
 <script type="text/javascript" src="js/ProjectedOverlay.js"></script> 
 <link rel="stylesheet" href="css/w3c.css">
+
 <script>
 var geocoder = new google.maps.Geocoder();
 
@@ -125,10 +125,12 @@ input:checked + .slider:before {
 <button class="w3-btn w3-green w3-border w3-round-xlarge" onClick=";modal.style.display = 'block';">Layers</button>
   Location:&nbsp;<input type="text" id="location">&nbsp 
 <button class="w3-btn w3-blue w3-border w3-round-xlarge" onClick="findLocation()">Search</button>
-<button class="w3-btn w3-blue w3-border w3-round-xlarge" onClick="getRoute()">Route</button>Pin Type:   
-<input type="radio" Name="pinType" value="Blue" onclick="setIcon(this.value)" checked="checked"> Blue
-  <input type="radio" Name="pinType" value="Red" onclick="setIcon(this.value)"> Red
-  <input type="radio" Name="pinType" value="Yellow" onclick="setIcon(this.value)"> Yellow
+<button class="w3-btn w3-blue w3-border w3-round-xlarge" onClick="getRoute()">Route</button>Pin Type:&nbsp;
+   <select name="webmenu" id="webmenu" onclick="setIcon(this.value)"">
+    <option value="Blue" >Manhole</option>
+    <option value="Red" >Pump</option>
+    <option value="Green" >Drain</option>
+  </select>
   
 <!-- The Modal -->
 <div id="myModal" class="modal" width="50%">
@@ -203,6 +205,35 @@ input:checked + .slider:before {
 </div>   
 
 <SCRIPT>
+var iconBase = 'http://maps.google.com/mapfiles/kml/pushpin/';
+
+var icons = {
+  blue: {
+    icon: iconBase + 'blue-pushpin.png'
+  },
+  green: {
+    icon: iconBase + 'grn-pushpin.png'
+  },
+  pink: {
+	    icon: iconBase + 'pink-pushpin.png'
+	  },
+purple: {
+	    icon: iconBase + 'purple-pushpin.png'
+	  },
+	  red: {
+		    icon: iconBase + 'red-pushpin.png'
+		  },
+		  white: {
+		    icon: iconBase + 'wht-pushpin.png'
+		  },
+		  yellow: {
+			    icon: iconBase + 'ylw-pushpin.png'
+			  },
+  lightblue: {
+    icon: iconBase + 'ltblue-pushpin.png'
+  }
+};
+markericon=icons.blue.icon
 function setLayer(checkbox,kml)
 {
 	if(checkbox.checked){
@@ -254,7 +285,7 @@ function initialize()
 	    		afterParse: layerLoaded,
 	    	    zoom: false,
 	    		processStyles: true,
-	    		 icon: icons.parking.icon,
+	    		 icon: icons.blue.icon,
 	       });
 	    });
 
@@ -277,7 +308,7 @@ var mapProp = {
   google.maps.event.addListenerOnce(map,'idle',function(){
 	  google.maps.event.trigger(map, "resize");
   })
-  var drawingManager = new google.maps.drawing.DrawingManager({
+  /*var drawingManager = new google.maps.drawing.DrawingManager({
       drawingMode: google.maps.drawing.OverlayType.MARKER,
       drawingControl: true,
       drawingControlOptions: {
@@ -294,7 +325,7 @@ var mapProp = {
         zIndex: 1
       }
     });
-    drawingManager.setMap(map);
+    drawingManager.setMap(map);*/
   
 }
 
@@ -406,39 +437,12 @@ function getRoute(){
 	});
 }
 
-var iconBase = 'http://maps.google.com/mapfiles/kml/pushpin/';
 
-var icons = {
-  blue: {
-    icon: iconBase + 'blue-pushpin.png'
-  },
-  green: {
-    icon: iconBase + 'grn-pushpin.png'
-  },
-  pink: {
-	    icon: iconBase + 'pink-pushpin.png'
-	  },
-purple: {
-	    icon: iconBase + 'purple-pushpin.png'
-	  },
-	  red: {
-		    icon: iconBase + 'red-pushpin.png'
-		  },
-		  white: {
-		    icon: iconBase + 'wht-pushpin.png'
-		  },
-		  yello: {
-			    icon: iconBase + 'ylw-pushpin.png'
-			  },
-  lightblue: {
-    icon: iconBase + 'ltblue-pushpin.png'
-  }
-};
-markericon=icons.blue.icon
 function setIcon(val){
-	if(val=="Blue"){markericon=icons.blue.icon}
-	if(val=="Red"){markericon=icons.red.icon}
-	if(val=="Yellow"){markericon=icons.yello.icon}
+	console.log(val)
+	if(val=="Blue") {markericon=icons.blue.icon}
+	if(val=="Red")  {markericon=icons.red.icon}
+	if(val=="Green"){markericon=icons.green.icon}
 }
 </SCRIPT>
   </body>
