@@ -339,7 +339,7 @@ marker.addListener('click', function(event) {
     var lat = marker.getPosition().lat();
 	var lng = marker.getPosition().lng();
 	llval=lat+","+lng
-	if(caller=="MYJOBS"){
+	if(mapmode=="getlocation"){
 		closeTheApp(llval)
 	}
 	

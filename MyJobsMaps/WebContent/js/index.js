@@ -16,6 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var mapmode=""
+var map_x="";
+var map_y="";
  var handleOpenURL = function(url) {
         
             checkCall(url)
@@ -43,8 +46,13 @@ function checkPassedParams(){
 		    	  xxx=xx[1].split("=")
 		    	  if(xxx[0]=="MYJOBS")
 		    	  	{
-		    		 caller="MYJOBS"
-		    		  
+		    		 y=xxx[1].split("|")
+		    		 mapmopde=y[0];
+		    		 if(y[0]=="plotjob") {
+		    			 
+		    				 may_x=y[1]
+		    			 	 may_x=y[2]
+		    		 }
 		    		  }
 		    	  
 		    	  
