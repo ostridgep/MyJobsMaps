@@ -20,7 +20,7 @@ var mapmode=""
 var map_x="";
 var map_y="";
  var handleOpenURL = function(url) {
-        alert("handle open")
+        
             checkCall(url)
         };
 var caller=""
@@ -36,55 +36,24 @@ function closeTheApp(val){
 		          window.close();
 		}
 }
-function checkPassedParams(){
-alert("into checking parama")
-		    window.plugins.launchmyapp.getLastIntent(function(url) {
-		    	alert(url)
-		      if (url.indexOf('myjobsmap://' > -1)) {
-		    	  xx=url.split("?")
-		    	  xxx=xx[1].split("=")
-		    	  if(xxx[0]=="MYJOBS")
-		    	  	{
-		    		 y=xxx[1].split("|")
-		    		 mapmopde=y[0];
-		    		 alert(mapmode)
-		    		 if(y[0]=="plotjob") {
-		    			 
-		    				 may_x=y[1]
-		    			 	 may_x=y[2]
-		    		 }
-		    		  }
-		    	  
-		    	  
-		    	  
-		       
-		      } else {
-		    	 
-		      }
-		    }, function(error) {
-		    	
-		    });
-		   
 
-
-}
 function checkCall(url){
 
-	alert("into checkCall"+url)
+	
    
     	
       		      if (url.indexOf('myjobsmap://' > -1)) {
-		    	  xx=url.split("?")
-		    	  xxx=xx[1].split("=")
-		    	  if(xxx[0]=="MYJOBS")
+		    	  url_parameters=url.split("?")
+		    	  subprameters=url_parameters[1].split("=")
+		    	  if(subprameters[0]=="MYJOBS")
 		    	  	{
-		    		 y=xxx[1].split("|")
-		    		 mapmopde=y[0];
+		    		 functions=subprameters[1].split("|")
+		    		 mapmopde=subprameters[1];
 		    		 alert(mapmode)
-		    		 if(y[0]=="plotjob") {
+		    		 if(functions[0]=="plotjob") {
 		    			 
-		    				 may_x=y[1]
-		    			 	 may_x=y[2]
+		    				 may_x=functions[1]
+		    			 	 may_x=functions[2]
 		    		 }
 		    		  }
 		    	  
