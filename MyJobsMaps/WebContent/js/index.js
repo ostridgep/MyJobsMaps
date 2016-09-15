@@ -38,7 +38,7 @@ function closeTheApp(val){
 }
 
 function checkCall(url){
-
+ 
 	
    alert(url)
     	
