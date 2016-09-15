@@ -276,6 +276,7 @@ var llval=""
 }
 function initialize()
 {
+	checkPassedParams()
 	var myCenter;
 	if (navigator.geolocation) {
 	    navigator.geolocation.getCurrentPosition(function (position) {
