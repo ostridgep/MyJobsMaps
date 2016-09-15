@@ -20,7 +20,7 @@ var mapmode=""
 var map_x="";
 var map_y="";
  var handleOpenURL = function(url) {
-        
+        alert("handle open")
             checkCall(url)
         };
 var caller=""
@@ -70,7 +70,7 @@ alert("into checking parama")
 }
 function checkCall(url){
 
-	alert("into checkCall")
+	alert("into checkCall"+url)
    
     	
       		      if (url.indexOf('myjobsmap://' > -1)) {
