@@ -38,7 +38,6 @@ function closeTheApp(val){
 }
 function checkPassedParams(){
 
-
 		    window.plugins.launchmyapp.getLastIntent(function(url) {
 		    	alert(url)
 		      if (url.indexOf('myjobsmap://' > -1)) {
