@@ -280,7 +280,18 @@ function initialize()
 	var myCenter;
 	if (navigator.geolocation) {
 	    navigator.geolocation.getCurrentPosition(function (position) {
-	    	myCenter = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	    	if(mapmode=="plotjob"){
+	    		myCenter=new google.maps.LatLng(map_x,map_y);
+	    		var marker = new google.maps.Marker({
+	    		    position: myCenter,
+	    		   
+	    		    map: map,
+	    		  });
+	    	}else{
+	    		myCenter = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	    	}
+	    	
+	    	
 	       map.setCenter(myCenter);
 	       layers = new geoXML3.parser({map: map, 
 	    		afterParse: layerLoaded,
@@ -340,7 +351,7 @@ marker.addListener('click', function(event) {
     var lat = marker.getPosition().lat();
 	var lng = marker.getPosition().lng();
 	llval=lat+","+lng
-	alert(mapmode)
+	
 	if(mapmode=="getlocation"){
 		closeTheApp(llval)
 	}

@@ -19,6 +19,7 @@
 var mapmode=""
 var map_x="";
 var map_y="";
+
  var handleOpenURL = function(url) {
         
             checkCall(url)
