@@ -40,14 +40,15 @@ function checkPassedParams(){
 
 
 		    window.plugins.launchmyapp.getLastIntent(function(url) {
-		    	
-		      if (url.indexOf('myjobschild://' > -1)) {
+		    	alert(url)
+		      if (url.indexOf('myjobsmap://' > -1)) {
 		    	  xx=url.split("?")
 		    	  xxx=xx[1].split("=")
 		    	  if(xxx[0]=="MYJOBS")
 		    	  	{
 		    		 y=xxx[1].split("|")
 		    		 mapmopde=y[0];
+		    		 alert(mapmode)
 		    		 if(y[0]=="plotjob") {
 		    			 
 		    				 may_x=y[1]
