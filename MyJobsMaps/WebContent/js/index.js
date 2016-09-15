@@ -40,22 +40,23 @@ function closeTheApp(val){
 function checkCall(url){
 
 	
-   
+   alert(url)
     	
       		      if (url.indexOf('myjobsmap://' > -1)) {
 		    	  url_parameters=url.split("?")
 		    	  subprameters=url_parameters[1].split("=")
 		    	  if(subprameters[0]=="MYJOBS")
 		    	  	{
+		    		 alert("Its MYJOBS"+subprameters[1])
 		    		 functions=subprameters[1].split("|")
 		    		 mapmopde=subprameters[1];
-		    		 alert(mapmode)
-		    		 if(functions[0]=="plotjob") {
-		    			 
-		    				 may_x=functions[1]
-		    			 	 may_x=functions[2]
-		    		 }
-		    		  }
+		    		 alert(mapmopde)
+		    		 if(functions[0]=="plotjob") {		    			 
+		    				 map_x=functions[1]
+		    			 	 map_x=functions[2]
+		    				 alert("Plot"+map_x+"-----"+map_y)
+		    		 		}
+		    		}
 		    	  
 		    	  
 		    	  
