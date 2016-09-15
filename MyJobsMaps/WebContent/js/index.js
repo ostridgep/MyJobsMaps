@@ -37,7 +37,7 @@ function closeTheApp(val){
 		}
 }
 function checkPassedParams(){
-
+alert("into checking parama")
 		    window.plugins.launchmyapp.getLastIntent(function(url) {
 		    	alert(url)
 		      if (url.indexOf('myjobsmap://' > -1)) {
@@ -70,26 +70,30 @@ function checkPassedParams(){
 }
 function checkCall(url){
 
-
+	alert("into checkCall")
    
     	
-      if (url.indexOf('myjobschild://' > -1)) {
-    	 
-    	  xx=url.split("?")
-    	  xxx=xx[1].split("=")
-    	
-    	  if(xxx[0]=="MYJOBS")
-    	  	{
-    		 
-    		  caller="MYJOBS"
-    		  }
-    	  
-    	  
-    	  
-       
-      } else {
-    	//  alert("ckignore intent: " + url);
-      }
+      		      if (url.indexOf('myjobsmap://' > -1)) {
+		    	  xx=url.split("?")
+		    	  xxx=xx[1].split("=")
+		    	  if(xxx[0]=="MYJOBS")
+		    	  	{
+		    		 y=xxx[1].split("|")
+		    		 mapmopde=y[0];
+		    		 alert(mapmode)
+		    		 if(y[0]=="plotjob") {
+		    			 
+		    				 may_x=y[1]
+		    			 	 may_x=y[2]
+		    		 }
+		    		  }
+		    	  
+		    	  
+		    	  
+		       
+		      }else{
+		    	  alert("Not a MYJOBS CAll")
+		      }
     }  
 
 
