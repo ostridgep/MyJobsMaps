@@ -43,7 +43,7 @@ function checkCall(url){
 		    	  	{
 		    		
 		    		 functions=subprameters[1].split("|")
-MYJOBS=getlocation|myjobshost|setlocation
+
 					mapmode=subprameters[1];
 		    		
 		    		 if(functions[0]=="plotjob") {		    			 
