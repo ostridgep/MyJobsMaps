@@ -45,7 +45,7 @@ function checkCall(url){
 		    		
 		    		 functions=subprameters[1].split("|")
 
-					mapmode=subprameters[0];
+					mapmode=functions[0];
 		    		alert(mapmode)
 		    		 if(functions[0]=="plotjob") {		    			 
 		    				 map_x=functions[1]
