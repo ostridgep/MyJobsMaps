@@ -26,6 +26,7 @@ var map_y="";
         };
 var caller=""
 function closeTheApp(val){
+	alert(hostapp+'://?MYJOBS='+hostfunction+'|'+val)
 	cordova.InAppBrowser.open(hostapp+'://?MYJOBS='+hostfunction+'|'+val,'_system')
 	
 }
