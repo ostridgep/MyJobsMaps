@@ -19,7 +19,8 @@
 var mapmode=""
 var map_x="";
 var map_y="";
-
+var hostapp=""
+	var hostfunction=""
  var handleOpenURL = function(url) {
         
             checkCall(url)
@@ -30,11 +31,10 @@ function closeTheApp(val){
 	cordova.InAppBrowser.open(hostapp+'://?MYJOBS='+hostfunction+'|'+val,'_system')
 	
 }
-var hostapp=""
-var hostfunction=""
+
 function checkCall(url){
  
-	
+	alert(url)
    
     	
       		      if (url.indexOf('myjobsmap://' > -1)) {
@@ -45,8 +45,8 @@ function checkCall(url){
 		    		
 		    		 functions=subprameters[1].split("|")
 
-					mapmode=subprameters[1];
-		    		
+					mapmode=subprameters[0];
+		    		alert(mapmode)
 		    		 if(functions[0]=="plotjob") {		    			 
 		    				 map_x=functions[1]
 		    			 	 map_y=functions[2]
