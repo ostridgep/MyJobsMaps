@@ -29,7 +29,7 @@ function closeTheApp(val){
 	cordova.InAppBrowser.open(hostapp+'://?MYJOBS='+hostfunction+'|'+val,'_system')
 	
 }
-var hostname=""
+var hostapp=""
 var hostfunction=""
 function checkCall(url){
  
@@ -52,7 +52,7 @@ MYJOBS=getlocation|myjobshost|setlocation
 		    				
 		    		 		}
 		    		 if(functions[0]=="getlocation") {		    			 
-		    			 hostname=functions[1]
+		    			 hostapp=functions[1]
 	    				 hostfunction=functions[2]
 	    				
 	    		 		}
