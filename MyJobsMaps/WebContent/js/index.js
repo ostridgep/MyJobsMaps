@@ -26,18 +26,11 @@ var map_y="";
         };
 var caller=""
 function closeTheApp(val){
-	window.plugins.clipboard.copy(val)
-	if (navigator.app) {
-		navigator.app.exitApp();
-		}
-		else if (navigator.device) {
-		  navigator.device.exitApp();
-		}
-		else {
-		          window.close();
-		}
+	cordova.InAppBrowser.open(hostapp+'://?MYJOBS='+hostfunction+'|'+val,'_system')
+	
 }
-
+var hostname=""
+var hostfunction=""
 function checkCall(url){
  
 	
@@ -50,13 +43,19 @@ function checkCall(url){
 		    	  	{
 		    		
 		    		 functions=subprameters[1].split("|")
-		    		 mapmode=subprameters[1];
+MYJOBS=getlocation|myjobshost|setlocation
+					mapmode=subprameters[1];
 		    		
 		    		 if(functions[0]=="plotjob") {		    			 
 		    				 map_x=functions[1]
 		    			 	 map_y=functions[2]
 		    				
 		    		 		}
+		    		 if(functions[0]=="getlocation") {		    			 
+		    			 hostname=functions[1]
+	    				 hostfunction=functions[2]
+	    				
+	    		 		}
 		    		}
 		    	  
 		    	  
